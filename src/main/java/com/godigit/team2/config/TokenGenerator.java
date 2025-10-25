@@ -9,10 +9,11 @@ import io.jsonwebtoken.security.Keys;
 import java.security.Key;
 import java.util.Date;
 
+    import static com.godigit.team2.config.JwtAuthenticationFilter.SECRET_KEY;
+
 public class TokenGenerator {
 
-    private static final String security_key = "Umesh_kumar_vishwakarma-digit_insurance_123456"; // Use your custom key here
-        private static final Key key= Keys.hmacShaKeyFor(security_key.getBytes());
+    private static final Key key= Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
     public static String generateToken(String role) {
         return Jwts.builder()
                 .setSubject("response-token")

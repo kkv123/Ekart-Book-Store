@@ -21,7 +21,7 @@ import java.security.Key;
 
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
-    private static final String SECRET_KEY = "Umesh_kumar_vishwakarma-digit_insurance_123456"; // Ensure the key is at least 32 bytes long
+    static final String SECRET_KEY = "Umesh_kumar_vishwakarma-digit_insurance_123456"; // Ensure the key is at least 32 bytes long
     private static final Key key = Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
 
     @Override
