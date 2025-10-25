@@ -1,5 +1,5 @@
-# Build stage - Using Maven with Java 23
-FROM maven:3.8.9-eclipse-temurin-23 AS build
+# Build stage - Using Maven 3.9.9 with Java 23
+FROM maven:3.9.9-eclipse-temurin-23 AS build
 WORKDIR /app
 
 # Copy pom.xml and source code
