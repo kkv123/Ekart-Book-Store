@@ -27,7 +27,8 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf(csrf -> csrf.disable())
-                .authorizeHttpRequests(p->p.requestMatchers("/register","/token","/e-kart/products/key").permitAll()
+                .authorizeHttpRequests(p->p.requestMatchers("/e-kart/user/login","/token",
+                                "/e-kart/products/key","/e-kart/user/register").permitAll()
                         .anyRequest().authenticated())
                 .addFilterBefore(new JwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
                 .httpBasic(Customizer.withDefaults())
