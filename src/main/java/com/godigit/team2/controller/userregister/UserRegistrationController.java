@@ -1,10 +1,14 @@
 package com.godigit.team2.controller.userregister;
 
 
+import com.godigit.team2.config.TokenGenerator;
 import com.godigit.team2.dto.RegisterDto;
 import com.godigit.team2.service.user_register.UserRegisterServiceImp;
 import com.godigit.team2.entity.user.User;
+import org.antlr.v4.runtime.TokenFactory;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +18,7 @@ import static com.godigit.team2.AuditLog.AuditDto.fetchAgentDetails;
 @RequestMapping("/e-kart/user")
 public class UserRegistrationController {
 
-
+    private TokenGenerator tokenGenerator;
     private UserRegisterServiceImp userRegisterServiceImp;
 
     @Autowired
@@ -30,10 +34,14 @@ public class UserRegistrationController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> LoginUser(@RequestBody User user) {
+    public ResponseEntity<String> LoginUser(@RequestBody User user) {
         User loggedInUser = userRegisterServiceImp.loginUser(user.getUsername(), user.getPassword());
         if (loggedInUser != null) {
-            return ResponseEntity.ok(loggedInUser);
+            JSONObject token = new JSONObject();
+            token.put("token",tokenGenerator.generateToken(user.getRole()));
+            token.put("user",loggedInUser.getUsername());
+            token.put("role",loggedInUser.getRole());
+            return new ResponseEntity<>(token.toString(), HttpStatus.OK);
         } else {
             return ResponseEntity.status(401).body("Invalid credentials");
         }
