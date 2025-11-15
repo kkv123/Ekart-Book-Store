@@ -3,11 +3,15 @@ package com.godigit.team2.service.user_register;
 import com.godigit.team2.dto.RegisterDto;
 import com.godigit.team2.entity.user.User;
 import com.godigit.team2.repository.user.UserRepo;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -57,5 +61,18 @@ public class UserRegisterServiceImp implements UserRegisterService {
         UUID uuid = UUID.randomUUID();
 
         return uuid.toString().replace("-", "").substring(0, 12);
+    }
+
+    public ResponseEntity<String> getAllUsers() {
+        List<User> users = userRepository.findAll();
+        JSONArray sanitizedUsers = new JSONArray();
+
+        for (User user : users) {
+            JSONObject userJson = new JSONObject(user);
+            userJson.remove("password");
+            sanitizedUsers.put(userJson);
+        }
+
+        return new ResponseEntity<>(sanitizedUsers.toString(), HttpStatus.OK);
     }
 }
