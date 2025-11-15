@@ -7,11 +7,12 @@ Authorization: Bearer <your_token>
 Cookie: JSESSIONID=<your_session_id>
 
 
+
 📦 Cart APIs
 ➕ Add Item to Cart
 POST /e-kart/cart/add?userId={userId}&productId={productId}&quantity={quantity}
 Adds a product to a user's cart.
-curl --location --request POST 'localhost:8080/e-kart/cart/add?userId=751c7387ca66&productId=3&quantity=2000' \
+curl --location --request POST 'https://ekart-book-store.onrender.com/e-kart/cart/add?userId=751c7387ca66&productId=3&quantity=2000' \
 --header 'Authorization: Bearer <token>' \
 --header 'Content-Type: application/json' \
 --header 'Cookie: JSESSIONID=<session_id>' \
@@ -20,16 +21,15 @@ curl --location --request POST 'localhost:8080/e-kart/cart/add?userId=751c7387ca
 🛒 View Cart
 GET /e-kart/cart/{userId}
 Retrieves all items in the user's cart.
-curl --location --request GET 'localhost:8080/e-kart/cart/751c7387ca66' \
+curl --location --request GET 'https://ekart-book-store.onrender.com/e-kart/cart/751c7387ca66' \
 --header 'Authorization: Bearer <token>' \
 --header 'Cookie: JSESSIONID=<session_id>'
-
 
 💬 Feedback APIs
 ✍️ Submit Feedback
 POST /e-kart/feedback/submit?userId={userId}&productId={productId}
 Submit feedback for a product.
-curl --location --request POST 'localhost:8080/e-kart/feedback/submit?userId=751c7387ca66&productId=3' \
+curl --location --request POST 'https://ekart-book-store.onrender.com/e-kart/feedback/submit?userId=751c7387ca66&productId=3' \
 --header 'Authorization: Bearer <token>' \
 --header 'Content-Type: application/json' \
 --header 'Cookie: JSESSIONID=<session_id>' \
@@ -39,33 +39,34 @@ curl --location --request POST 'localhost:8080/e-kart/feedback/submit?userId=751
 
 👤 Get Feedback by User
 GET /e-kart/feedback/user/{userId}
-curl --location --request GET 'localhost:8080/e-kart/feedback/user/751c7387ca66' \
+curl --location --request GET 'https://ekart-book-store.onrender.com/e-kart/feedback/user/751c7387ca66' \
 --header 'Authorization: Bearer <token>' \
 --header 'Cookie: JSESSIONID=<session_id>'
 
 📦 Get Feedback by Product
 GET /e-kart/feedback/product/{productId}
-curl --location --request GET 'localhost:8080/e-kart/feedback/product/3' \
+curl --location --request GET 'https://ekart-book-store.onrender.com/e-kart/feedback/product/3' \
 --header 'Authorization: Bearer <token>' \
 --header 'Cookie: JSESSIONID=<session_id>'
 
 📜 Order APIs
 🧾 Place Order
 POST /e-kart/orders/add?userId={userId}
-curl --location --request POST 'localhost:8080/e-kart/orders/add?userId=751c7387ca66' \
+curl --location --request POST 'https://ekart-book-store.onrender.com/e-kart/orders/add?userId=751c7387ca66' \
 --header 'Authorization: Bearer <token>' \
 --header 'Cookie: JSESSIONID=<session_id>'
 
+
 📚 Order History
 GET /e-kart/orders/history?userId={userId}
-curl --location --request GET 'localhost:8080/e-kart/orders/history?userId=751c7387ca66' \
+curl --location --request GET 'https://ekart-book-store.onrender.com/e-kart/orders/history?userId=751c7387ca66' \
 --header 'Authorization: Bearer <token>' \
 --header 'Cookie: JSESSIONID=<session_id>'
 
 🛍️ Product APIs
 📦 Get All Products
 GET /e-kart/products/all
-curl --location --request GET 'localhost:8080/e-kart/products/all' \
+curl --location --request GET 'https://ekart-book-store.onrender.com/e-kart/products/all' \
 --header 'Authorization: Bearer <token>' \
 --header 'Cookie: JSESSIONID=<session_id>'
 
@@ -81,13 +82,11 @@ curl --location --request POST 'https://ekart-book-store.onrender.com/e-kart/use
   "password": "test1"
 }'
 
-
 👥 Get All Users
 GET /e-kart/user/all
-curl --location --request GET 'localhost:8080/e-kart/user/all' \
+curl --location --request GET 'https://ekart-book-store.onrender.com/e-kart/user/all' \
 --header 'Authorization: Bearer <token>' \
 --header 'Cookie: JSESSIONID=<session_id>'
-
 
 
 🧪 Sample Basic Auth
@@ -95,10 +94,11 @@ curl --location --request GET 'https://ekart-book-store.onrender.com/e-kart/prod
 --header 'Authorization: Basic dGVzdDp0ZXN0' \
 --header 'Content-Type: application/json'
 
-
 
 🛠️ Notes
 - Replace <token> and <session_id> with actual values.
 - All endpoints are protected and require valid authentication.
-- Ensure the server is running locally (localhost:8080) or deployed (https://ekart-book-store.onrender.com).
+- The API is deployed at: https://ekart-book-store.onrender.com
 - Use Content-Type: application/json for all POST requests with a body.
+
+
