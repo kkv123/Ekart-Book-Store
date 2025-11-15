@@ -47,5 +47,10 @@ public class UserRegistrationController {
         }
     }
 
+    @GetMapping("/all")
+    public ResponseEntity<String> getAllUser(){
+        return userRegisterServiceImp.getAllUsers();
+    }
+
 
 }

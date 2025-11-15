@@ -110,7 +110,8 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll() // Allow all OPTIONS requests
-                        .requestMatchers("/e-kart/user/login","/token","/e-kart/products/key","/e-kart/user/register").permitAll()
+                        .requestMatchers("/e-kart/user/login","/token","/e-kart/products/key",
+                                "/e-kart/user/register","/e-kart/products/all").permitAll()
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(new JwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)

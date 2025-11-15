@@ -5,6 +5,7 @@ import com.godigit.team2.entity.user.User;
 import org.springframework.http.ResponseEntity;
 
 public interface UserRegisterService {
-    public ResponseEntity<String> registerUser(RegisterDto user);
-    public User loginUser(String username, String password);
+          ResponseEntity<String> registerUser(RegisterDto user);
+          User loginUser(String username, String password);
+          ResponseEntity<String> getAllUsers();
 }
